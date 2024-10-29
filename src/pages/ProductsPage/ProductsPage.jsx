@@ -18,6 +18,7 @@ const ProductsPage = () => {
 
   return (
     <div className="page products-page">
+      <LoadingScreen />
       <Greeting />
       <Products fetchError={error} products={products} />
     </div>
