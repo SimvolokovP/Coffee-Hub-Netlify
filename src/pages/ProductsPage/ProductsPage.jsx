@@ -2,9 +2,12 @@ import './ProductsPage.scss'
 
 import supabase from '../../database/supabase/supabase'
 import { useEffect, useState } from 'react'
+import useTg from '../../hooks/useTg'
 
 const ProductsPage = () => {
 	const [products, setProducts] = useState([])
+	const {tg} = useTg()
+	console.log(tg)
 
 	useEffect(() => {
 		const fetchProducts = async () => {
