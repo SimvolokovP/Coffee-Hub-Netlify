@@ -1,0 +1,31 @@
+:root {
+	/* --accent-color: #FDCB50; */
+	// --accent-color: #FD8F01;
+
+}
+
+body {
+	font-family: 'Itim', cursive;
+	margin: 0;
+	padding: 0 10px;
+
+	min-height: 100vh;
+	// background-color: var(--tg-theme-bg-color);
+	background-color: var(--bg-color);
+	color: var(--tg-theme-text-color);
+}
+
+.main-title {
+	font-weight: 400;
+	font-size: 36px;
+	line-height: 89%;
+	letter-spacing: -0.01em;
+	color: var(--tg-theme-text-color);
+	max-width: 326px;
+}
+
+.accent {
+	color: var(--accent-color);
+}
+
+
