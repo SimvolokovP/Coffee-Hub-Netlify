@@ -6,8 +6,10 @@ import useTg from '../../hooks/useTg'
 
 const ProductsPage = () => {
 	const [products, setProducts] = useState([])
-	const {tg} = useTg()
-	console.log(tg)
+	const { user } = useTg()
+
+	const userName = user.username
+	const firstName = user.first_name // types?
 
 	useEffect(() => {
 		const fetchProducts = async () => {
@@ -23,17 +25,23 @@ const ProductsPage = () => {
 	return (
 		<div>
 			<h1 className='main-title'>
-				Hello, <span className='accent'>Alex Svistunov!</span> It’s Great{' '}
-				<span className='accent'>Day For Coffee</span>
+				Hello, <span className='accent'>{userName ? userName : firstName}</span>{' '}
+				It’s Great <span className='accent'>Day For Coffee</span>
 			</h1>
 
 			<div className='products'>
 				{products.map(product => (
 					<div key={product.id} className='products__item product'>
-						<img className='product__image' src={`/${product.name}.svg`} alt={product.name} width={70} height={70} />
+						<img
+							className='product__image'
+							src={`/${product.name}.svg`}
+							alt={product.name}
+							width={70}
+							height={70}
+						/>
 						<h3 className='product__title'>{product.name}</h3>
 						<p className='product__descr accent'>${product.price}</p>
-					</div>	
+					</div>
 				))}
 			</div>
 		</div>
