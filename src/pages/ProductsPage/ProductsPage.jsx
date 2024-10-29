@@ -3,6 +3,7 @@ import './ProductsPage.scss'
 import supabase from '../../database/supabase/supabase'
 import { useEffect, useState } from 'react'
 import useTg from '../../hooks/useTg'
+import { Link } from 'react-router-dom'
 
 const ProductsPage = () => {
 	const [products, setProducts] = useState([])
@@ -31,7 +32,11 @@ const ProductsPage = () => {
 
 			<div className='products'>
 				{products.map(product => (
-					<div key={product.id} className='products__item product'>
+					<Link
+						to={`product/${product.id}`}
+						key={product.id}
+						className='products__item product'
+					>
 						<img
 							className='product__image'
 							src={`/${product.name}.svg`}
@@ -41,7 +46,7 @@ const ProductsPage = () => {
 						/>
 						<h3 className='product__title'>{product.name}</h3>
 						<p className='product__descr accent'>${product.price}</p>
-					</div>
+					</Link>
 				))}
 			</div>
 		</div>
