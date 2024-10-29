@@ -1,55 +1,27 @@
-import './ProductsPage.scss'
-
-import supabase from '../../database/supabase/supabase'
-import { useEffect, useState } from 'react'
-import useTg from '../../hooks/useTg'
-import { Link } from 'react-router-dom'
+import "./ProductsPage.scss";
+import { useEffect } from "react";
+import Products from "../../components/Products/Products";
+import Greeting from "../../components/Greeting/Greeting";
+import useProductStore from "../../store/useProductsStore";
+import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 
 const ProductsPage = () => {
-	const [products, setProducts] = useState([])
-	const { user } = useTg()
+  const { products, loading, error, fetchProducts } = useProductStore();
 
-	const userName = user.username
-	const firstName = user.first_name // types?
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
 
-	useEffect(() => {
-		const fetchProducts = async () => {
-			const { data: products, error } = await supabase
-				.from('products')
-				.select('*')
-			console.log(products)
-			setProducts(products)
-		}
-		fetchProducts()
-	}, [])
+  if (loading) {
+    return <LoadingScreen />;
+  }
 
-	return (
-		<div>
-			<h1 className='main-title'>
-				Hello, <span className='accent'>{userName ? userName : firstName}</span>{' '}
-				It’s Great <span className='accent'>Day For Coffee</span>
-			</h1>
+  return (
+    <div className="page products-page">
+      <Greeting />
+      <Products fetchError={error} products={products} />
+    </div>
+  );
+};
 
-			<div className='products'>
-				{products.map(product => (
-					<Link
-						to={`product/${product.id}`}
-						key={product.id}
-						className='products__item product'
-					>
-						<img
-							className='product__image'
-							src={`/${product.name}.svg`}
-							alt={product.name}
-							width={70}
-							height={70}
-						/>
-						<h3 className='product__title'>{product.name}</h3>
-						<p className='product__descr accent'>${product.price}</p>
-					</Link>
-				))}
-			</div>
-		</div>
-	)
-}
-export default ProductsPage
+export default ProductsPage;

@@ -1,13 +1,10 @@
 const useTg = () => {
+  const tg = window.Telegram.WebApp;
 
-	const tg = window.Telegram.WebApp
-	const initDataUnsafe = tg.initDataUnsafe
-	const user = initDataUnsafe.user
-
-	return {
-		tg,
-		initDataUnsafe,
-		user
-	}
-}
-export default useTg
+  return {
+    tg,
+    user: tg.initDataUnsafe?.user,
+    queryId: tg.initDataUnsafe?.query_id,
+  };
+};
+export default useTg;

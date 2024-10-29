@@ -1,26 +1,21 @@
-import './ProductPage.scss'
-import { useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import supabase from '../../database/supabase/supabase'
-import Product from '../../components/Product/Product'
+import "./ProductPage.scss";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import Product from "../../components/Product/Product";
+import useProductsStore from "../../store/useProductsStore";
+import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 
 const ProductPage = () => {
-	const { id } = useParams()
-	const [product, setProduct] = useState({})
+  const { id } = useParams();
+  const { product, loading, error, fetchProductById } = useProductsStore();
 
-	useEffect(() => {
-		const fetchProduct = async () => {
-			const { data: product, error } = await supabase
-				.from('products')
-				.select('*')
-				.eq('id', id)
-				.single()
-			console.log(product)
-			setProduct(product)
-		}
-		fetchProduct()
-	}, [])
+  useEffect(() => {
+    fetchProductById(id);
+  }, [id, fetchProductById]);
 
-	return <Product product={product} />
-}
-export default ProductPage
+  if (loading) return <LoadingScreen />;
+
+  return <Product fetchError={error} product={product} />;
+};
+
+export default ProductPage;

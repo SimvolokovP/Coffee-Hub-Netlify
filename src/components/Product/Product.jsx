@@ -1,8 +1,6 @@
-import './Product.scss'
+// import "./Product.scss";
 
-const Product = ({product}) => {
-	return (
-		<div>Product</div>
-	)
-}
-export default Product
+const Product = ({ product, fetchError }) => {
+  return <>{fetchError ? fetchError : <div>{product?.id}</div>}</>;
+};
+export default Product;

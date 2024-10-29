@@ -1,4 +1,5 @@
-import './App.css'
+import './styles/normalize.css'
+import './styles/App.css'
 import AppRoutes from './router/AppRoutes.jsx'
 import { useEffect } from 'react'
 import useTheme from './hooks/useTheme.js'
