@@ -11,21 +11,16 @@ const App = () => {
 
 	const handleThemeChange = () => {
 		checkThemeAndSetProperties()
-	
-
 	}
 
 	const initialSetTheme = () => {
 		checkThemeAndSetProperties()
-	
 	}
 
 	useEffect(() => {
 		tg.onEvent('themeChaned', handleThemeChange)
-		
 
 		initialSetTheme()
-		// console.log('color', document.documentElement.style.getPropertyValue('--accent-color'))
 
 		return () => {
 			tg.offEvent('themeChanged', handleThemeChange)
