@@ -1,36 +1,36 @@
-import './styles/normalize.css'
-import './styles/App.css'
-import AppRoutes from './router/AppRoutes.jsx'
-import { useEffect } from 'react'
-import useTheme from './hooks/useTheme.js'
-import useTg from './hooks/useTg.js'
+import "./styles/normalize.css";
+import "./styles/App.css";
+import AppRoutes from "./router/AppRoutes.jsx";
+import { useEffect } from "react";
+import useTheme from "./hooks/useTheme.js";
+import useTg from "./hooks/useTg.js";
 
 const App = () => {
-	const { tg } = useTg()
-	const { checkThemeAndSetProperties } = useTheme()
+  const { tg } = useTg();
+  const { checkThemeAndSetProperties } = useTheme();
 
-	const handleThemeChange = () => {
-		checkThemeAndSetProperties()
-	}
+  const handleThemeChange = () => {
+    checkThemeAndSetProperties();
+  };
 
-	const initialSetTheme = () => {
-		checkThemeAndSetProperties()
-	}
+  const initialSetTheme = () => {
+    checkThemeAndSetProperties();
+  };
 
-	useEffect(() => {
-		tg.onEvent('themeChaned', handleThemeChange)
+  useEffect(() => {
+    tg.onEvent("themeChaned", handleThemeChange);
 
-		initialSetTheme()
+    initialSetTheme();
 
-		return () => {
-			tg.offEvent('themeChanged', handleThemeChange)
-		}
-	}, [])
+    return () => {
+      tg.offEvent("themeChanged", handleThemeChange);
+    };
+  }, []);
 
-	return (
-		<>
-			<AppRoutes />
-		</>
-	)
-}
-export default App
+  return (
+    <>
+      <AppRoutes />
+    </>
+  );
+};
+export default App;

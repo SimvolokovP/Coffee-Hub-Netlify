@@ -24,7 +24,7 @@ export default class SupabaseService {
         .single();
 
       if (error) throw new Error(error.message);
-
+      console.log(product)
       return product;
     } catch (error) {
       console.error("Error fetching product by ID:", error);

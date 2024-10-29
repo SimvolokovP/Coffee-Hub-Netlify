@@ -1,0 +1,23 @@
+.conter {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 18px;
+
+  & button {
+    background-color: var(--accent-color);
+    border: none;
+    outline: none;
+    display: block;
+    color: #fff;
+    padding: 0;
+    width: 45px;
+    height: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 22px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+}
