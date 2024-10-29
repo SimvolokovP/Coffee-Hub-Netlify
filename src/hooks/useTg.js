@@ -5,6 +5,7 @@ const useTg = () => {
     tg,
     user: tg.initDataUnsafe?.user,
     queryId: tg.initDataUnsafe?.query_id,
+    
   };
 };
 export default useTg;

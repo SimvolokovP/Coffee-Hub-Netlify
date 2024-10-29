@@ -24,6 +24,8 @@ const useProductsStore = create((set) => ({
       set({ error: error.message, loading: false });
     }
   },
+
+  
 }));
 
 export default useProductsStore;
