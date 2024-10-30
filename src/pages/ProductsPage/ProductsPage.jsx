@@ -5,8 +5,10 @@ import Greeting from "../../components/Greeting/Greeting";
 import useProductStore from "../../store/useProductsStore";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 
+
 const ProductsPage = () => {
   const { products, loading, error, fetchProducts } = useProductStore();
+
 
   useEffect(() => {
     fetchProducts();

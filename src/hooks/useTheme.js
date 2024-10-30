@@ -10,6 +10,7 @@ const useTheme = () => {
 	function checkThemeAndSetProperties() {
 		if (tg.colorScheme === 'light') {
 			setLightProperties()
+			
 		}
 
 		if (tg.colorScheme === 'dark') {

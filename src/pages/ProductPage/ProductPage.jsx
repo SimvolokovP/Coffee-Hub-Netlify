@@ -1,15 +1,17 @@
-import './ProductPage.scss'
-import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
-import Product from '../../components/Product/Product'
-import useProductsStore from '../../store/useProductsStore'
+import { useNavigate, useParams } from 'react-router-dom'
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen'
+import Product from '../../components/Product/Product'
 import useTg from '../../hooks/useTg'
+import useColorStore from '../../store/useColorStore'
+import useProductsStore from '../../store/useProductsStore'
+import './ProductPage.scss'
 
 const ProductPage = () => {
 	const { id } = useParams()
 	const { product, loading, error, fetchProductById } = useProductsStore()
 	const { tg } = useTg()
+	const { color } = useColorStore()
 	const navigate = useNavigate()
 
 	useEffect(() => {
@@ -18,7 +20,7 @@ const ProductPage = () => {
 
 	const mainButtonParams = {
 		text: 'VIEW ORDER',
-		color: document.documentElement.style.getPropertyValue('--accent-color'),
+		color: '#ccc',
 		hasShineEffect: true,
 	}
 
@@ -30,8 +32,8 @@ const ProductPage = () => {
 		tg.BackButton.show()
 		tg.BackButton.onClick(tgBackButtonOnClick)
 
-    tg.MainButton.show()
-    tg.MainButton.setParams(mainButtonParams)
+		tg.MainButton.show()
+		tg.MainButton.setParams(mainButtonParams)
 	}, [])
 
 	if (loading) return <LoadingScreen />
