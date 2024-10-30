@@ -5,14 +5,12 @@ import Product from '../../components/Product/Product'
 import useProductsStore from '../../store/useProductsStore'
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen'
 import useTg from '../../hooks/useTg'
-import useColorStore from '../../store/useColorStore'
 
 const ProductPage = () => {
 	const { id } = useParams()
 	const { product, loading, error, fetchProductById } = useProductsStore()
 	const { tg } = useTg()
 	const navigate = useNavigate()
-  const {color} = useColorStore()
 
 	useEffect(() => {
 		fetchProductById(id)
@@ -20,7 +18,7 @@ const ProductPage = () => {
 
 	const mainButtonParams = {
 		text: 'VIEW ORDER',
-		color: color,
+		color: document.documentElement.style.getPropertyValue('--accent-color'),
 		hasShineEffect: true,
 	}
 
