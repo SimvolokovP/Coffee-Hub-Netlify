@@ -4,12 +4,44 @@ import { useEffect, useState } from "react";
 import useTg from "../../hooks/useTg";
 import Counter from "../Counter/Counter";
 import CustomInput from "../CustomInput/CustomInput";
+import { useCartStore } from "../../store/useCartStore";
 
 const Product = ({ product, fetchError }) => {
   const { tg } = useTg();
   const [productCount, setProductCount] = useState(1);
-  const [productSize, setProductSize] = useState("M");
-  const [productMilk, setProductMilk] = useState("🥛");
+  const [productSize, setProductSize] = useState("Middle");
+  const [productMilk, setProductMilk] = useState("Cow");
+
+  const [isAdded, setAdded] = useState(false);
+  const [addedQuantity, setAddedQuantity] = useState(0);
+
+  const { addToCart, cart } = useCartStore();
+
+  useEffect(() => {
+    const existingItemIndex = cart.findIndex(
+      (item) =>
+        item.id === product.id &&
+        item.size === productSize &&
+        item.milk === productMilk
+    );
+    if (existingItemIndex !== -1) {
+      setAdded(true);
+      setAddedQuantity(cart[existingItemIndex]?.quantity);
+    } else {
+      setAdded(false);
+    }
+  }, [productCount, productMilk, productSize, product, cart]);
+
+  const showProduct = () => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      size: productSize,
+      milk: productMilk,
+      quantity: productCount,
+      price: product.price,
+    });
+  };
 
   return (
     <>
@@ -74,6 +106,12 @@ const Product = ({ product, fetchError }) => {
                 setValue={setProductMilk}
               />
             </div>
+            <button onClick={showProduct}>
+              {isAdded
+                ? `This product is already in the cart (${addedQuantity})`
+                : "Add to cart"}
+            </button>
+            <button onClick={() => console.log(cart)}>cart</button>
           </div>
         </div>
       )}

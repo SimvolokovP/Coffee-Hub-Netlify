@@ -13,7 +13,6 @@ const CustomInput = ({ stepArray, value, setValue }) => {
     } else {
       setValue(percentageValue);
     }
-    console.log(value);
   };
 
   return (
