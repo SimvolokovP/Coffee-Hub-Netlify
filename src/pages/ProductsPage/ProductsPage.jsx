@@ -2,15 +2,16 @@ import "./ProductsPage.scss";
 import { useEffect } from "react";
 import Products from "../../components/Products/Products";
 import Greeting from "../../components/Greeting/Greeting";
-import useProductStore from "../../store/useProductsStore";
+
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
+import { useProducts } from "../../hooks/productsHooks/useProducts";
 
 const ProductsPage = () => {
-  const { products, loading, error, fetchProducts } = useProductStore();
+  const { products, loading, error, fetchProducts } = useProducts();
 
   useEffect(() => {
     fetchProducts();
-  }, [fetchProducts]);
+  }, []);
 
   if (loading) {
     return <LoadingScreen />;

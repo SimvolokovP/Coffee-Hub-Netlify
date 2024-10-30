@@ -2,19 +2,19 @@ import './ProductPage.scss'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import Product from '../../components/Product/Product'
-import useProductsStore from '../../store/useProductsStore'
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen'
 import useTg from '../../hooks/useTg'
+import { useProductById } from '../../hooks/productsHooks/useProductById'
 
 const ProductPage = () => {
 	const { id } = useParams()
-	const { product, loading, error, fetchProductById } = useProductsStore()
+	const { product, loading, error, fetchProductById } = useProductById(id)
 	const { tg } = useTg()
 	const navigate = useNavigate()
 
-	useEffect(() => {
-		fetchProductById(id)
-	}, [id, fetchProductById])
+	// useEffect(() => {
+	// 	fetchProductById(id)
+	// }, [id, fetchProductById])
 
 	const mainButtonParams = {
 		text: 'VIEW ORDER',
