@@ -24,6 +24,8 @@ const App = () => {
 		tg.onEvent('themeChanged', handleThemeChange)
 
 		initialSetTheme()
+    // console.log(tg.CloudStorage.setItem('key', 'value'))
+    console.log(tg.CloudStorage.getItem('key'))
 
 		return () => {
 			tg.offEvent('themeChanged', handleThemeChange)
