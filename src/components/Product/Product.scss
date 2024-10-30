@@ -14,11 +14,11 @@
   }
 
   &__inner {
-    background-color: #fff;
+    background-color: var(--tg-theme-bg-color);
     display: flex;
     flex-direction: column;
     gap: 50px;
-    padding: 40px 20px 0 20px;
+    padding: 40px 20px 56px 20px;
     border-top-left-radius: 32px;
     border-top-right-radius: 32px;
   }
@@ -51,11 +51,22 @@
     gap: 8px;
   }
 
-  &__descr div {
+  &__point {
     font-size: 30px;
+  }
+
+  &__point span {
+    color: #909090;
   }
 
   &__descr p {
     margin: 0;
+  }
+
+  &__label {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 }

@@ -1,29 +1,29 @@
-import './ProductsPage.scss'
-import { useEffect } from 'react'
-import Products from '../../components/Products/Products'
-import Greeting from '../../components/Greeting/Greeting'
-import useProductStore from '../../store/useProductsStore'
-import LoadingScreen from '../../components/LoadingScreen/LoadingScreen'
+import "./ProductsPage.scss";
+import { useEffect } from "react";
+import Products from "../../components/Products/Products";
+import Greeting from "../../components/Greeting/Greeting";
+import useProductStore from "../../store/useProductsStore";
+import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 
 const ProductsPage = () => {
-	const { products, loading, error, fetchProducts } = useProductStore()
+  const { products, loading, error, fetchProducts } = useProductStore();
 
-	useEffect(() => {
-		fetchProducts()
-	}, [fetchProducts])
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
 
-	if (loading) {
-		return <LoadingScreen />
-	}
+  if (loading) {
+    return <LoadingScreen />;
+  }
 
-	return (
-		<div className='page products-page'>
-			<div className='container'>
-				<Greeting />
-				<Products fetchError={error} products={products} />
-			</div>
-		</div>
-	)
-}
+  return (
+    <div className="page products-page">
+      <div className="container">
+        <Greeting />
+        <Products fetchError={error} products={products} />
+      </div>
+    </div>
+  );
+};
 
-export default ProductsPage
+export default ProductsPage;
