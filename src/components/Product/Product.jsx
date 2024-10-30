@@ -7,7 +7,6 @@ import Counter from "../Counter/Counter";
 const Product = ({ product, fetchError }) => {
   const { tg } = useTg();
   const [productCount, setProductCount] = useState(1);
- 
 
   return (
     <>
