@@ -5,6 +5,7 @@ import Greeting from "../../components/Greeting/Greeting";
 
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import { useProducts } from "../../hooks/productsHooks/useProducts";
+import { Link } from "react-router-dom";
 
 const ProductsPage = () => {
   const { products, loading, error, fetchProducts } = useProducts();
@@ -23,6 +24,7 @@ const ProductsPage = () => {
         <Greeting />
         <Products fetchError={error} products={products} />
       </div>
+      <Link to={"/order"}>order</Link>
     </div>
   );
 };

@@ -20,7 +20,7 @@ const Product = ({ product, fetchError }) => {
   useEffect(() => {
     const existingItemIndex = cart.findIndex(
       (item) =>
-        item.id === product.id &&
+        item.id === product?.id &&
         item.size === productSize &&
         item.milk === productMilk
     );
@@ -31,17 +31,6 @@ const Product = ({ product, fetchError }) => {
       setAdded(false);
     }
   }, [productCount, productMilk, productSize, product, cart]);
-
-  const showProduct = () => {
-    addToCart({
-      id: product.id,
-      name: product.name,
-      size: productSize,
-      milk: productMilk,
-      quantity: productCount,
-      price: product.price,
-    });
-  };
 
   return (
     <>
@@ -106,7 +95,17 @@ const Product = ({ product, fetchError }) => {
                 setValue={setProductMilk}
               />
             </div>
-            <button onClick={showProduct}>
+            <button
+              onClick={() =>
+                addToCart({
+                  ...product,
+                  size: productSize,
+                  milk: productMilk,
+                  quantity: productCount,
+                  addedId: product?.id + productMilk + productSize,
+                })
+              }
+            >
               {isAdded
                 ? `This product is already in the cart (${addedQuantity})`
                 : "Add to cart"}

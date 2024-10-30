@@ -22,6 +22,12 @@ body {
   max-width: 326px;
 }
 
+.list-reset {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
 .accent {
   color: var(--accent-color);
 }
