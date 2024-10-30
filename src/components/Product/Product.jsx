@@ -7,16 +7,7 @@ import Counter from "../Counter/Counter";
 const Product = ({ product, fetchError }) => {
   const { tg } = useTg();
   const [productCount, setProductCount] = useState(1);
-  // const mainButtonParams = {
-  //   text: 'VIEW ORDER',
-  //   color: 'var(--accent-color)',
-  // 	hasShineEffect: true,
-  // }
-
-  useEffect(() => {
-    tg.MainButton.show();
-    // tg.MainButton.setParams(mainButtonParams)
-  }, []);
+ 
 
   return (
     <>

@@ -1,38 +1,46 @@
-import "./ProductPage.scss";
-import { useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
-import Product from "../../components/Product/Product";
-import useProductsStore from "../../store/useProductsStore";
-import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
-import useTg from "../../hooks/useTg";
+import './ProductPage.scss'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useEffect } from 'react'
+import Product from '../../components/Product/Product'
+import useProductsStore from '../../store/useProductsStore'
+import LoadingScreen from '../../components/LoadingScreen/LoadingScreen'
+import useTg from '../../hooks/useTg'
 
 const ProductPage = () => {
-  const { id } = useParams();
-  const { product, loading, error, fetchProductById } = useProductsStore();
-  const { tg } = useTg();
-  const navigate = useNavigate();
+	const { id } = useParams()
+	const { product, loading, error, fetchProductById } = useProductsStore()
+	const { tg } = useTg()
+	const navigate = useNavigate()
 
-  const tgBackButtonOnClick = () => {
-    navigate("/");
-    tg.BackButton.hide();
-  };
+	useEffect(() => {
+		fetchProductById(id)
+	}, [id, fetchProductById])
 
-  useEffect(() => {
-    fetchProductById(id);
-  }, [id, fetchProductById]);
+	const mainButtonParams = {
+		text: 'VIEW ORDER',
+		color: document.documentElement.style.getPropertyValue('--accent-color'),
+		hasShineEffect: true,
+	}
 
-  useEffect(() => {
-    tg.BackButton.show();
-    tg.BackButton.onClick(tgBackButtonOnClick);
-  }, []);
+	const tgBackButtonOnClick = () => {
+		navigate('/')
+		tg.BackButton.hide()
+	}
+	useEffect(() => {
+		tg.BackButton.show()
+		tg.BackButton.onClick(tgBackButtonOnClick)
 
-  if (loading) return <LoadingScreen />;
+    tg.MainButton.show()
+    tg.MainButton.setParams(mainButtonParams)
+	}, [])
 
-  return (
-    <div className="page product-page">
-      <Product fetchError={error} product={product} />
-    </div>
-  );
-};
+	if (loading) return <LoadingScreen />
 
-export default ProductPage;
+	return (
+		<div className='page product-page'>
+			<Product fetchError={error} product={product} />
+		</div>
+	)
+}
+
+export default ProductPage
