@@ -5,8 +5,15 @@ import "react-range-slider-input/dist/style.css";
 const CustomInput = ({ stepArray, value, setValue }) => {
   const handleSliderChange = (values) => {
     const percentageValue = values[1];
-    const index = Math.round((percentageValue / 100) * (stepArray.length - 1));
-    setValue(stepArray[index]);
+    if (stepArray) {
+      const index = Math.round(
+        (percentageValue / 100) * (stepArray.length - 1)
+      );
+      setValue(stepArray[index]);
+    } else {
+      setValue(percentageValue);
+    }
+    console.log(value);
   };
 
   return (
@@ -24,7 +31,7 @@ const CustomInput = ({ stepArray, value, setValue }) => {
         defaultValue={[0, 50]}
         thumbsDisabled={[true, false]}
         rangeSlideDisabled={true}
-        step={100 / (stepArray.length - 1)}
+        step={100 / (stepArray?.length - 1)}
         minValue={0}
         maxValue={100}
         onInput={handleSliderChange}
