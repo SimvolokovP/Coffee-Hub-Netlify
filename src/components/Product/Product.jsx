@@ -51,7 +51,11 @@ const Product = ({ product, fetchError }) => {
                 Size <span>({productSize})</span>
               </div>
               <CustomInput
-                stepArray={["S", "M", "L"]}
+                stepArray={[
+                  { icon: "S", value: "Small" },
+                  { icon: "M", value: "Middle" },
+                  { icon: "L", value: "Large" },
+                ]}
                 value={productSize}
                 setValue={setProductSize}
               />
@@ -61,7 +65,11 @@ const Product = ({ product, fetchError }) => {
                 Milk <span>({productMilk})</span>
               </div>
               <CustomInput
-                stepArray={["🥥", "🥛", "🍌"]}
+                stepArray={[
+                  { icon: "🥥", value: "Coconut" },
+                  { icon: "🥛", value: "Cow" },
+                  { icon: "🍌", value: "Banana" },
+                ]}
                 value={productMilk}
                 setValue={setProductMilk}
               />

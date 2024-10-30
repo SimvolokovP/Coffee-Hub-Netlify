@@ -9,7 +9,7 @@ const CustomInput = ({ stepArray, value, setValue }) => {
       const index = Math.round(
         (percentageValue / 100) * (stepArray.length - 1)
       );
-      setValue(stepArray[index]);
+      setValue(stepArray[index].value);
     } else {
       setValue(percentageValue);
     }
@@ -21,7 +21,7 @@ const CustomInput = ({ stepArray, value, setValue }) => {
       {stepArray && (
         <div className="custom-input__steps">
           {stepArray.map((step, index) => (
-            <div key={index}>{step}</div>
+            <div key={index}>{step?.icon}</div>
           ))}
         </div>
       )}
