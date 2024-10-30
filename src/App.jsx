@@ -9,11 +9,11 @@ import useColorStore from './store/useColorStore.js'
 const App = () => {
 	const { tg } = useTg()
 	const { checkThemeAndSetProperties } = useTheme()
-  const {color, setColor} = useColorStore()
+  const {color, changeColor} = useColorStore()
 
 	const handleThemeChange = () => {
 		checkThemeAndSetProperties()
-    setColor('#fff')
+    changeColor('#fff')
 	}
 
 	const initialSetTheme = () => {
@@ -24,7 +24,7 @@ const App = () => {
 		tg.onEvent('themeChanged', handleThemeChange)
 
 		initialSetTheme()
-    setColor('#000')
+    changeColor('#000')
 
 		return () => {
 			tg.offEvent('themeChanged', handleThemeChange)
