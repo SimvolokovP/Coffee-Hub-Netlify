@@ -5,8 +5,7 @@
 body {
   font-family: "Itim", cursive;
   margin: 0;
-  padding: 0 10px;
-
+  padding: 0;
   min-height: 100vh;
   /* background-color: var(--tg-theme-bg-color); */
   background-color: var(--bg-color);
@@ -48,4 +47,8 @@ a {
 
 img {
   max-width: 100%;
+}
+
+.container {
+  padding: 0 10px;
 }
