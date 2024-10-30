@@ -2,7 +2,7 @@ import './Counter.scss';
 
 const Counter = ({ count, setCount, minValue, maxValue }) => {
   return (
-    <div className='conter'>
+    <div className='counter'>
       <button onClick={() => setCount((c) => Math.max(c - 1, minValue))}>
         -
       </button>
