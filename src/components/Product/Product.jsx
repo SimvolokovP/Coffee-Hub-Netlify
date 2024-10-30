@@ -8,8 +8,8 @@ import CustomInput from "../CustomInput/CustomInput";
 const Product = ({ product, fetchError }) => {
   const { tg } = useTg();
   const [productCount, setProductCount] = useState(1);
-  const [productSize, setProductSize] = useState(50);
-  const [productMilk, setProductMilk] = useState(15);
+  const [productSize, setProductSize] = useState("M");
+  const [productMilk, setProductMilk] = useState("🥛");
 
   return (
     <>
@@ -47,12 +47,24 @@ const Product = ({ product, fetchError }) => {
               <p>{product?.description ? product?.description : "-"}</p>
             </div>
             <div className="product-item__label">
-              <div className="product-item__point">Size</div>
-              <CustomInput stepArray={["S", "M", "L"]} value={productSize} setValue={setProductSize} />
+              <div className="product-item__point">
+                Size <span>({productSize})</span>
+              </div>
+              <CustomInput
+                stepArray={["S", "M", "L"]}
+                value={productSize}
+                setValue={setProductSize}
+              />
             </div>
             <div className="product-item__label">
-              <div className="product-item__point">Milk <span>({productMilk}%)</span></div>
-              <CustomInput value={productMilk} setValue={setProductMilk} />
+              <div className="product-item__point">
+                Milk <span>({productMilk})</span>
+              </div>
+              <CustomInput
+                stepArray={["🥥", "🥛", "🍌"]}
+                value={productMilk}
+                setValue={setProductMilk}
+              />
             </div>
           </div>
         </div>
