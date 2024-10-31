@@ -1,6 +1,11 @@
 import "./OrderInput.scss";
 
-const OrderInput = ({ placeholder = "", type = "text", initValue = "" }) => {
+const OrderInput = ({
+  placeholder = "",
+  type = "text",
+  value = "",
+  setValue,
+}) => {
   const splitPlaceholder = placeholder.split(" ");
 
   return (
@@ -16,9 +21,11 @@ const OrderInput = ({ placeholder = "", type = "text", initValue = "" }) => {
         )}
       </div>
       <input
-        value={initValue}
+        onChange={(e) => setValue(e.target.value)}
+        className="order-input__input"
+        value={value}
         type={type}
-        min={type === "time" ? initValue : undefined}
+        // min={type === "time" ? value : undefined}
       />
     </label>
   );
