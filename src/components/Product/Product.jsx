@@ -32,6 +32,19 @@ const Product = ({ product, fetchError }) => {
     }
   }, [productCount, productMilk, productSize, product, cart]);
 
+  const getSizePrice = (size) => {
+    switch (size) {
+      case "Small":
+        return product?.price[0];
+      case "Middle":
+        return product?.price[1];
+      case "Large":
+        return product?.price[2];
+      default:
+        return product?.price[1];
+    }
+  };
+
   return (
     <>
       {fetchError ? (
@@ -53,7 +66,7 @@ const Product = ({ product, fetchError }) => {
               <div className="product-item__param">
                 <h3 className="product-item__name">{product?.name}</h3>
                 <div className="accent product-item__price">
-                  $ {product?.price}
+                  $ {getSizePrice(productSize)}{" "}
                 </div>
               </div>
               <Counter
@@ -98,7 +111,9 @@ const Product = ({ product, fetchError }) => {
             <button
               onClick={() =>
                 addToCart({
-                  ...product,
+                  id: product?.id,
+                  name: product?.id,
+                  price: getSizePrice(productSize),
                   size: productSize,
                   milk: productMilk,
                   quantity: productCount,

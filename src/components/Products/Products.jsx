@@ -22,7 +22,7 @@ const Products = ({ products, fetchError }) => {
                 height={70}
               />
               <h3 className="product__title">{product.name}</h3>
-              <p className="product__descr accent">${product.price}</p>
+              <p className="product__descr accent">${product.price[0]}</p>
             </Link>
           ))}
         </div>
