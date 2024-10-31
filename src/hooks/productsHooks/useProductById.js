@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import SupabaseService from "../../api/supabaseApi";
+import ProductsService from "../../api/productsApi";
 
 export const useProductById = (productId) => {
   const [product, setProduct] = useState(null);
@@ -10,7 +11,7 @@ export const useProductById = (productId) => {
     setLoading(true);
     setError(null);
     try {
-      const fetchedProduct = await SupabaseService.getProductById(id);
+      const fetchedProduct = await ProductsService.getProductById(id);
       setProduct(fetchedProduct);
     } catch (error) {
       setError(error.message);

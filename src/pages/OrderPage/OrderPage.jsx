@@ -8,7 +8,7 @@ const OrderPage = () => {
         <div className="order-page__title">
           Your <span className="accent">order</span>
         </div>
-		<CartList />
+        <CartList />
       </div>
     </div>
   );
