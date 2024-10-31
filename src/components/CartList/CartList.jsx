@@ -2,13 +2,19 @@ import { useCartStore } from "../../store/useCartStore";
 import "./CartList.scss";
 
 const CartList = () => {
-  const { cart } = useCartStore();
+  const { cart, removeFromCart } = useCartStore();
   return (
     <ul className="list-reset cart-list">
       {cart.length
         ? cart.map((product) => (
             <li key={product?.addedId}>
               <div className="cart-list__item">
+                <button
+                  onClick={() => removeFromCart(product?.addedId)}
+                  className="cart-list__item--remove accent"
+                >
+                  delete
+                </button>
                 <div className="cart-list__item--info">
                   <img
                     src={`/${product?.name}.svg`}
@@ -18,9 +24,12 @@ const CartList = () => {
                   />
                   <div className="cart-list__item--descr">
                     <div>
-                      {product?.name} <span className="accent">{product?.quantity}X</span>
+                      {product?.name}{" "}
+                      <span className="accent">{product?.quantity}X</span>
                     </div>
-                    <span className="cart-list__item--options">{product?.size} size, {product?.milk} milk</span>
+                    <span className="cart-list__item--options">
+                      {product?.size} size, {product?.milk} milk
+                    </span>
                   </div>
                 </div>
                 <div className="cart-list__item--price">

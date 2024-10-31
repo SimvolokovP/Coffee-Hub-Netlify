@@ -1,6 +1,12 @@
 .order-page {
-    &__title {
-        font-size: 36px;
-        margin-bottom: 32px;
-    }
+  &__title {
+    font-size: 36px;
+    margin-bottom: 32px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
 }

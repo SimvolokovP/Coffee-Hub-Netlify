@@ -4,11 +4,25 @@
   gap: 16px;
   max-height: 246px;
   overflow-y: auto;
+  margin-bottom: 32px;
 
   &__item {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+
+    &--remove {
+        position: absolute;
+        right: 0;
+        top: 0;
+        background-color: transparent;
+        border: none;
+        display: block;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
 
     &--info {
       display: flex;
@@ -27,7 +41,7 @@
     }
 
     &--price {
-        font-size: 20px;
+      font-size: 20px;
     }
   }
 }

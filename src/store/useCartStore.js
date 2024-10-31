@@ -18,4 +18,8 @@ export const useCartStore = create((set) => ({
         return { cart: [...state.cart, product] };
       }
     }),
+  removeFromCart: (productId) =>
+    set((state) => {
+      return { cart: state.cart.filter((item) => item.addedId !== productId) };
+    }),
 }));
