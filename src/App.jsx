@@ -20,6 +20,8 @@ const App = () => {
     checkThemeAndSetProperties();
   };
 
+  // 123
+
   useEffect(() => {
     tg.onEvent("themeChanged", handleThemeChange);
 
