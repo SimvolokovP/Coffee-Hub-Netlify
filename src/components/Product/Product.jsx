@@ -9,7 +9,7 @@ import { useCartStore } from "../../store/useCartStore";
 const Product = ({ product, fetchError }) => {
   const { tg } = useTg();
   const [productCount, setProductCount] = useState(1);
-  const [productSize, setProductSize] = useState("Middle");
+  const [productSize, setProductSize] = useState("Medium");
   const [productMilk, setProductMilk] = useState("Cow");
 
   const [isAdded, setAdded] = useState(false);
@@ -36,7 +36,7 @@ const Product = ({ product, fetchError }) => {
     switch (size) {
       case "Small":
         return product?.price[0];
-      case "Middle":
+      case "Medium":
         return product?.price[1];
       case "Large":
         return product?.price[2];
@@ -87,7 +87,7 @@ const Product = ({ product, fetchError }) => {
               <CustomInput
                 stepArray={[
                   { icon: "S", value: "Small" },
-                  { icon: "M", value: "Middle" },
+                  { icon: "M", value: "Medium" },
                   { icon: "L", value: "Large" },
                 ]}
                 value={productSize}
