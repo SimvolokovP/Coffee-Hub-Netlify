@@ -112,7 +112,7 @@ const Product = ({ product, fetchError }) => {
               onClick={() =>
                 addToCart({
                   id: product?.id,
-                  name: product?.id,
+                  name: product?.name,
                   price: getSizePrice(productSize),
                   size: productSize,
                   milk: productMilk,

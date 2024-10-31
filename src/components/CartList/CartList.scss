@@ -1,3 +1,33 @@
 .cart-list {
-    
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 246px;
+  overflow-y: auto;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &--info {
+      display: flex;
+      gap: 16px;
+    }
+
+    &--descr {
+      font-size: 24px;
+    }
+
+    &--options {
+      font-size: 20px;
+      color: #909090;
+      width: 200px;
+      display: block;
+    }
+
+    &--price {
+        font-size: 20px;
+    }
+  }
 }
