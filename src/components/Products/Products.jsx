@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import "./Products.scss";
 
 const Products = ({ products, fetchError }) => {
+
+
+
   return (
     <>
       {fetchError ? (
@@ -16,7 +19,7 @@ const Products = ({ products, fetchError }) => {
             >
               <img
                 className="product__image"
-                src={`/${product.name}.svg`}
+                src={`/${product.name.toLowerCase()}.svg`}
                 alt={product.name}
                 width={70}
                 height={70}
