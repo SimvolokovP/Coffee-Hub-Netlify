@@ -5,7 +5,6 @@ import Greeting from "../../components/Greeting/Greeting";
 
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import { useProducts } from "../../hooks/productsHooks/useProducts";
-import { Link } from "react-router-dom";
 import { useCartStore } from '../../store/useCartStore'
 import useTg from '../../hooks/useTg'
 
@@ -30,7 +29,6 @@ const ProductsPage = () => {
         <Greeting />
         <Products fetchError={error} products={products} />
       </div>
-      <Link to={cart.length ? '/order' : '/'}>order</Link>
     </div>
   );
 };
