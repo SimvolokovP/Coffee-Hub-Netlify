@@ -1,4 +1,4 @@
-import productsData from "./products.json";
+import productsData from "../database/mockJson/products.json";
 
 export default class ProductsService {
   static async getAllProducts() {

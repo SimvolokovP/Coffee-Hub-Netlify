@@ -6,9 +6,11 @@ import Greeting from "../../components/Greeting/Greeting";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import { useProducts } from "../../hooks/productsHooks/useProducts";
 import { Link } from "react-router-dom";
+import { useCartStore } from '../../store/useCartStore'
 
 const ProductsPage = () => {
   const { products, loading, error, fetchProducts } = useProducts();
+  const {cart} = useCartStore()
 
   useEffect(() => {
     fetchProducts();
@@ -24,7 +26,7 @@ const ProductsPage = () => {
         <Greeting />
         <Products fetchError={error} products={products} />
       </div>
-      <Link to={"/order"}>order</Link>
+      <Link to={cart.length ? '/order' : '/'}>order</Link>
     </div>
   );
 };
