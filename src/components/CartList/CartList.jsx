@@ -17,7 +17,7 @@ const CartList = () => {
                 </button>
                 <div className="cart-list__item--info">
                   <img
-                    src={`/${product?.name}.svg`}
+                    src={`/${product?.name.toLowerCase()}.svg`}
                     alt={product?.name}
                     width={70}
                     height={70}

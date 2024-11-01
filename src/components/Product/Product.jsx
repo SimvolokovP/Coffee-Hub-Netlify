@@ -102,7 +102,7 @@ const Product = ({ product, fetchError }) => {
             <h3 className="product-item__title">{product?.name}</h3>
             <img
               className="product-item__image"
-              src={`/${product?.name}.svg`}
+              src={`/${product?.name.toLowerCase()}.svg`}
               alt={product?.name}
               width={120}
               height={120}
