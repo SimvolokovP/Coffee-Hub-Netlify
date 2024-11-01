@@ -16,23 +16,6 @@ const ProductPage = () => {
   // 	fetchProductById(id)
   // }, [id, fetchProductById])
 
-  const mainButtonParams = {
-    text: "VIEW ORDER",
-    color: document.documentElement.style.getPropertyValue("--accent-color"),
-    hasShineEffect: true,
-  };
-
-  const tgBackButtonOnClick = () => {
-    navigate("/");
-    tg.BackButton.hide();
-  };
-  useEffect(() => {
-    tg.BackButton.show();
-    tg.BackButton.onClick(tgBackButtonOnClick);
-
-    tg.MainButton.show();
-    tg.MainButton.setParams(mainButtonParams);
-  }, []);
 
   if (loading) return <LoadingScreen />;
 

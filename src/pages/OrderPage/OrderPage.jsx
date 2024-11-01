@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom'
 const OrderPage = () => {
 	const { user } = useTg()
 	const { cart } = useCartStore()
+  const {tg} = useTg()
   const navigate = useNavigate()
 
 	const getTargetTime = () => {
@@ -30,6 +31,10 @@ const OrderPage = () => {
       navigate('/')
     }
   }, [cart])
+
+  useEffect(() => {
+    tg.BackButton.show()
+  }, [])
 
 	return (
 		<div className='page order-page'>

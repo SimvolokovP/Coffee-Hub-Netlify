@@ -7,14 +7,18 @@ import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import { useProducts } from "../../hooks/productsHooks/useProducts";
 import { Link } from "react-router-dom";
 import { useCartStore } from '../../store/useCartStore'
+import useTg from '../../hooks/useTg'
 
 const ProductsPage = () => {
   const { products, loading, error, fetchProducts } = useProducts();
   const {cart} = useCartStore()
+  const {tg} = useTg()
 
   useEffect(() => {
     fetchProducts();
   }, []);
+
+
 
   if (loading) {
     return <LoadingScreen />;
