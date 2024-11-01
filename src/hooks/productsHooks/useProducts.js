@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import SupabaseService from "../../api/supabaseApi";
 import ProductsService from "../../api/productsApi";
 
 export const useProducts = () => {
