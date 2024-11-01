@@ -8,5 +8,17 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+    padding-bottom: 52px;
+  }
+
+  &__submit {
+    background-color: var(--accent-color);
+    color: #fff;
+    border: none;
+    outline: none;
+    display: block;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 6px 0;
   }
 }

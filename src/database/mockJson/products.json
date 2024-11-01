@@ -1,14 +1,20 @@
 [
   {
     "id": 1,
-    "name": "latte",
+    "name": "Latte",
     "description": "Best Latte",
     "price": [5.59, 6.25, 7.59]
   },
   {
     "id": 2,
-    "name": "cappuccino",
+    "name": "Cappuccino",
     "description": "Best Cappuchino",
     "price": [5.59, 6.25, 7.1]
+  },
+  {
+    "id": 3,
+    "name": "Ice-latte",
+    "description": "Tasty and Ice",
+    "price": [6.49, 7.14, 8.29]
   }
 ]

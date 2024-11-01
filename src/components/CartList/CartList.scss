@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-height: 246px;
+  max-height: 165px;
   overflow-y: auto;
   margin-bottom: 32px;
 
@@ -13,15 +13,15 @@
     position: relative;
 
     &--remove {
-        position: absolute;
-        right: 0;
-        top: 0;
-        background-color: transparent;
-        border: none;
-        display: block;
-        border: none;
-        outline: none;
-        cursor: pointer;
+      position: absolute;
+      right: 0;
+      top: 0;
+      background-color: transparent;
+      border: none;
+      display: block;
+      border: none;
+      outline: none;
+      cursor: pointer;
     }
 
     &--info {
@@ -36,7 +36,7 @@
     &--options {
       font-size: 20px;
       color: #909090;
-      width: 200px;
+      width: 195px;
       display: block;
     }
 

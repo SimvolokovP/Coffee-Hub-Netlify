@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import CartList from "../../components/CartList/CartList";
 import OrderInput from "../../components/OrderInput/OrderInput";
 import useTg from "../../hooks/useTg";
@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const OrderPage = () => {
   const { user } = useTg();
   const { cart } = useCartStore();
-  const { tg } = useTg();
+  const { tg, queryId } = useTg();
   const navigate = useNavigate();
 
   const getTargetTime = () => {
@@ -28,6 +28,31 @@ const OrderPage = () => {
     message: "Coffee please",
   });
 
+  const onSendData = useCallback(() => {
+    const data = {
+      queryId: queryId,
+      userId: user?.id,
+      products: cart,
+      formData: formData,
+    };
+    console.log("Sending data:", data);
+    fetch(`${serverUrl}/order`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => console.log("Success:", data))
+      .catch((error) => console.error("Error during fetch:", error));
+  }, [cart, queryId, formData]);
+
   useEffect(() => {
     if (cart.length === 0) {
       navigate("/");
@@ -45,7 +70,7 @@ const OrderPage = () => {
           Your <span className="accent">order</span>
         </div>
         <CartList />
-        <form className="order-page__form">
+        <form onSubmit={onSendData} className="order-page__form">
           <OrderInput
             placeholder="Customer name"
             value={formData.name}
@@ -62,6 +87,9 @@ const OrderPage = () => {
             value={formData.message}
             setValue={(e) => setFormData({ ...formData, message: e })}
           />
+          <button className="order-page__submit" type="submit">
+            Make an order
+          </button>
         </form>
       </div>
     </div>
