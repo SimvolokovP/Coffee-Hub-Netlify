@@ -70,7 +70,7 @@ const OrderPage = () => {
           Your <span className="accent">order</span>
         </div>
         <CartList />
-        <form onSubmit={onSendData} className="order-page__form">
+        <form className="order-page__form">
           <OrderInput
             placeholder="Customer name"
             value={formData.name}
@@ -87,10 +87,10 @@ const OrderPage = () => {
             value={formData.message}
             setValue={(e) => setFormData({ ...formData, message: e })}
           />
-          <button className="order-page__submit" type="submit">
+        </form>
+        <button onClick={onSendData} className="order-page__submit" >
             Make an order
           </button>
-        </form>
       </div>
     </div>
   );
