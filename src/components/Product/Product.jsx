@@ -170,7 +170,7 @@ const Product = ({ product, fetchError }) => {
               }
             >
               {isAdded
-                ? `This product is already in the cart (${addedQuantity})`
+                ? `Add to cart (${addedQuantity})`
                 : "Add to cart"}
             </button>
           </div>

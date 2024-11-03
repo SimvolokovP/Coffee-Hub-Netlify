@@ -36,7 +36,7 @@ const OrderPage = () => {
       formData: formData,
     };
     console.log("Sending data:", data);
-    fetch(`${"https://51cc-95-32-137-53.ngrok-free.app"}/order`, {
+    fetch(`${"https://61c7-95-32-137-53.ngrok-free.app"}/order`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
