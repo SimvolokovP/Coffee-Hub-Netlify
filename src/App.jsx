@@ -1,43 +1,45 @@
-import './styles/normalize.css'
-import './styles/App.css'
-import AppRoutes from './router/AppRoutes.jsx'
-import { useEffect } from 'react'
-import useTheme from './hooks/useTheme.js'
-import useTg from './hooks/useTg.js'
+import "./styles/normalize.css";
+import "./styles/App.css";
+import AppRoutes from "./router/AppRoutes.jsx";
+import { useEffect } from "react";
+import useTheme from "./hooks/useTheme.js";
+import useTg from "./hooks/useTg.js";
 
 const App = () => {
-	const { tg } = useTg()
-	const { checkThemeAndSetProperties } = useTheme()
+  const { tg, addHomeScreen } = useTg();
+  const { checkThemeAndSetProperties } = useTheme();
 
-	const handleThemeChange = () => {
-		checkThemeAndSetProperties()
-		tg.MainButton.setParams({
-			color: document.documentElement.style.getPropertyValue('--accent-color'),
-		})
-	}
+  const handleThemeChange = () => {
+    checkThemeAndSetProperties();
+    tg.MainButton.setParams({
+      color: document.documentElement.style.getPropertyValue("--accent-color"),
+    });
+  };
 
-	const initialSetTheme = () => {
-		checkThemeAndSetProperties()
-	}
+  const initialSetTheme = () => {
+    checkThemeAndSetProperties();
+  };
 
-	// 123
+  <button onClick={addHomeScreen}>123</button>;
 
-	useEffect(() => {
-		tg.onEvent('themeChanged', handleThemeChange)
+  // 123
 
-		initialSetTheme()
-		// console.log(tg.CloudStorage.setItem('key', 'value'))
-		// console.log(tg.CloudStorage.getItem('key'))
+  useEffect(() => {
+    tg.onEvent("themeChanged", handleThemeChange);
 
-		return () => {
-			tg.offEvent('themeChanged', handleThemeChange)
-		}
-	}, [])
+    initialSetTheme();
+    // console.log(tg.CloudStorage.setItem('key', 'value'))
+    // console.log(tg.CloudStorage.getItem('key'))
 
-	return (
-		<>
-			<AppRoutes />
-		</>
-	)
-}
-export default App
+    return () => {
+      tg.offEvent("themeChanged", handleThemeChange);
+    };
+  }, []);
+
+  return (
+    <>
+      <AppRoutes />
+    </>
+  );
+};
+export default App;
